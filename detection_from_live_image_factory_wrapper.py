@@ -23,7 +23,7 @@ while looping:
 
 # loop over; clean up and dump the last updated frame for convenience of debugging
 cv2.destroyAllWindows()
-cv2.imwrite("final.png", image)
+
 
 # let the system event loop do its thing
      # key = cv2.waitKey(100)
