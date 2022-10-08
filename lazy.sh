@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-python3 pupil_more_comp_test.py
-
+sudo apt install python3-pip
+pip install opencv-python
+pip install pupil-apriltags
