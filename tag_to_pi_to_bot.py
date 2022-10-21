@@ -1,14 +1,16 @@
 from cscore import CameraServer
 from pupil_apriltags import Detector
 import cv2
+import time
 from networktables import NetworkTables
 # setup and the main loop
 detector = Detector(families='tag36h11')
-cam = cv2.VideoCapture(0)
+cam = CameraServer.getVideo()
 Networktables.intialize('10.41.22.2')
+time.sleep(0.5)
 looping = True
 while looping:
-    result, image = cam.read()
+    image = cam.read()
     grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	# look for tags
     detections = detector.detect(grayimg)
@@ -24,7 +26,6 @@ while looping:
             #set the values we need here(including pose if i get to that, then send those vals over network tables)
         #looping = False
 
-    #cv2.imshow('Result', image) commented for now as will not be needed in final program waste of cpu to have it produce a graphic no soul will see
 
 #breaks the window and ends the program
 cv2.destroyAllWindows()
